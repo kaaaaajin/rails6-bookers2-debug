@@ -4,12 +4,14 @@ before_action :is_matching_login_user, only: [:edit, :update]
 
   def show
     @book = Book.find(params[:id])
-     @book_new = Book.new
+    @book_new = Book.new
+    @book_comment = BookComment.new
   end
 
   def index
     @books = Book.all
     @book = Book.new
+    
   end
 
   def create
