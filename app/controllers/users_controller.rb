@@ -9,8 +9,10 @@ class UsersController < ApplicationController
   end
 
   def index
-    @users = User.all
+    @users = User.where.not(id: current_user.id)
+    # idがcurrent_user以外のidを全て取ってくる
     @book = Book.new
+    
   end
 
   def edit
@@ -26,6 +28,9 @@ class UsersController < ApplicationController
       render "edit"
     end
   end
+  
+  
+  
 
   private
 
